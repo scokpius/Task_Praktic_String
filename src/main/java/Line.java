@@ -21,8 +21,8 @@ public class Line {
 
     private void checkStringParameters(String string) {
         charArray = string.toCharArray();
-        checkLatinCharactersOrNot(string);
-        if (checkIfTheStringIsEmpty(string) == true &&
+        if ( checkIfTheStringIsEmpty(string) == true &&
+                checkLatinCharactersOrNot(string) == true &&
                  searchForSingleCharacters(charArray) == true) {
              LOGGER.debug("The string consists of Latin characters and / or numbers and does not contain duplicate characters");
                this.line = true;
@@ -32,17 +32,19 @@ public class Line {
 
     private boolean checkIfTheStringIsEmpty(String string){
         if (string == "") {
-            LOGGER.debug("There are no Latin characters and numbers in the string");
+            LOGGER.debug("Empty line");
             return false;
         }else return true;
 
     }
 
-    private void checkLatinCharactersOrNot(String string){
+    private boolean checkLatinCharactersOrNot(String string){
         Pattern p = Pattern.compile("^[a-zA-Z0-9]*$");
         if(!p.matcher(string).matches()){
-            LOGGER.debug("There are no Latin characters and numbers in the string");
-        }
+            LOGGER.debug("There are no Latin characters and/or numbers in the string");
+            return false;
+        }else {return true;}
+
     }
 
     private boolean searchForSingleCharacters(char[] charArray){

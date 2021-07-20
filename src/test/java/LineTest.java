@@ -21,9 +21,10 @@ public class LineTest {
     public static Collection<Object[]> primeNumbers(){
         return Arrays.asList(new Object[][] {
                 {new Line(""), false},
-                {new Line("hfbcnd73l8sw"), true},
+                {new Line("hfbnd73l8sw"), true},
+                {new Line("hfbcnd73lc8sw"), false},
                 {new Line("тркнмтакаму"), false},
-                {new Line("+-09ипеноо"), false},
+                {new Line("+-09ипено"), false},
         });
     }
     @Test
