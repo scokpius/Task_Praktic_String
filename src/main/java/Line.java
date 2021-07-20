@@ -11,12 +11,13 @@ public class Line {
     public boolean getLine() {
         return this.line;
     }
-
-
     private static final Logger LOGGER = LogManager.getLogger(Line.class);
 
     public Line(String string) {
-       checkStringParameters(string);
+        if (string == null){
+            LOGGER.debug("Empty line");
+        } else {
+            checkStringParameters(string);}
     }
 
     private void checkStringParameters(String string) {
